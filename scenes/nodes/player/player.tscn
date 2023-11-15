@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv0brxc3ujn3t"]
+
+[ext_resource type="Texture2D" uid="uid://ddongvcx1b2ft" path="res://assets/textures/HazmatEnemy_idle.png" id="2_265hl"]
+[ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
+[ext_resource type="Script" path="res://scenes/nodes/player/rotation.gd" id="3_jyseq"]
+[ext_resource type="Script" path="res://scenes/nodes/player/Camera2D.gd" id="4_vo3mc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7yrqi"]
+radius = 2.0
+height = 12.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_lhuoy")
+speed = 100.02
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7yrqi")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -8)
+texture = ExtResource("2_265hl")
+script = ExtResource("3_jyseq")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+script = ExtResource("4_vo3mc")

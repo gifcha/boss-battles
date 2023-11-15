@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvg6jsllvpcmt"]
+
+[ext_resource type="PackedScene" uid="uid://ctilpsi4taama" path="res://scenes/components/gun/gun.tscn" id="1_3oi55"]
+[ext_resource type="Texture2D" uid="uid://w63u5nvlagnr" path="res://assets/textures/weapon_shotgun.png" id="2_we1nm"]
+
+[node name="test_gun" type="Node2D"]
+
+[node name="gun" parent="." node_paths=PackedStringArray("sprite", "BarrelMarker") instance=ExtResource("1_3oi55")]
+sprite = NodePath("../Sprite")
+BarrelMarker = NodePath("../Barrel")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(7, 0)
+texture = ExtResource("2_we1nm")
+
+[node name="Barrel" type="Marker2D" parent="."]

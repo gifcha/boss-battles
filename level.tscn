@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dugjvm260kv58"]
+
+[ext_resource type="PackedScene" uid="uid://bv0brxc3ujn3t" path="res://scenes/nodes/player/player.tscn" id="1_ceqv5"]
+[ext_resource type="Texture2D" uid="uid://dmnwt7bksrq8y" path="res://icon.svg" id="1_xyd14"]
+
+[node name="Level" type="Node2D"]
+position = Vector2(372, 251)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(203.5, 72)
+scale = Vector2(8.91406, 4.98438)
+texture = ExtResource("1_xyd14")
+
+[node name="player" parent="." instance=ExtResource("1_ceqv5")]
+metadata/_edit_lock_ = true
