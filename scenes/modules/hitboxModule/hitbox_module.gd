@@ -2,10 +2,11 @@ extends Node2D
 class_name hitbox_module
 
 
+signal hitbox_entered
+signal hitbox_exited
 
-func area_entered(area_rid, area, area_shape_index, local_shape_index):
-	pass # Replace with function body.
+func _on_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	hitbox_entered.emit()
 
-
-func area_exited(area_rid, area, area_shape_index, local_shape_index):
-	pass # Replace with function body.
+func _on_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	hitbox_exited.emit()
