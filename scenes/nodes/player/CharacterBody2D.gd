@@ -1,13 +1,11 @@
 extends CharacterBody2D
 
-@export var speed: float
+@export var movement_speed: float
 
-
-func getInputDirection():
-	var direction = Vector2()
-	direction.x = Input.get_axis("action_left", "action_right")
-	direction.y = Input.get_axis("action_up", "action_down")
-	return direction
+func calculateRealMovementSpeed(speed, screen_scale, pixels_per_unit):
+	# speed * screen_scale * pixels_per_unit
+	speed = speed * screen_scale * 100
+	return speed
 
 
 func setVelocity(direction, speed):
@@ -17,15 +15,12 @@ func setVelocity(direction, speed):
 	velocity = motion # sets body velocity
 
 
-func doMovement():
-	var direction = getInputDirection()
-	setVelocity(direction, speed)
-
-
-
+func _ready():
+	# multiply speed by the game window scale setting
+	movement_speed = calculateRealMovementSpeed(movement_speed, get_tree().root.content_scale_factor, 100)
+	
 
 func _physics_process(delta):
 
-	doMovement()
-	print(velocity)
+	setVelocity(InputModule.getMovementInputDirection(), movement_speed*delta)
 	move_and_slide()

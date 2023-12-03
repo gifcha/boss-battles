@@ -1,16 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dugjvm260kv58"]
+[gd_scene load_steps=5 format=3 uid="uid://dugjvm260kv58"]
 
-[ext_resource type="PackedScene" uid="uid://bv0brxc3ujn3t" path="res://scenes/nodes/player/player.tscn" id="1_ceqv5"]
-[ext_resource type="Texture2D" uid="uid://dmnwt7bksrq8y" path="res://icon.svg" id="1_xyd14"]
+[ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ceqv5"]
+
+[sub_resource type="Gradient" id="Gradient_gvy4u"]
+offsets = PackedFloat32Array(0, 0.735484, 1)
+colors = PackedColorArray(0.0829126, 0.0434394, 0, 1, 0.309984, 0.319002, 0.292107, 1, 0.27876, 0.211145, 0.161605, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8dl7g"]
+noise_type = 2
+frequency = 0.1995
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7jkls"]
+width = 1920
+height = 1080
+generate_mipmaps = false
+color_ramp = SubResource("Gradient_gvy4u")
+noise = SubResource("FastNoiseLite_8dl7g")
 
 [node name="Level" type="Node2D"]
 position = Vector2(372, 251)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(203.5, 72)
-scale = Vector2(8.91406, 4.98438)
-texture = ExtResource("1_xyd14")
+position = Vector2(-4, 1)
+scale = Vector2(1.033, 1)
+texture = SubResource("NoiseTexture2D_7jkls")
 
 [node name="player" parent="." instance=ExtResource("1_ceqv5")]
-metadata/_edit_lock_ = true
