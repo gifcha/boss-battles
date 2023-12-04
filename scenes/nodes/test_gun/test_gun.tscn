@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvg6jsllvpcmt"]
 
 [ext_resource type="PackedScene" uid="uid://ctilpsi4taama" path="res://scenes/components/gunComponent/gun.tscn" id="1_3oi55"]
-[ext_resource type="Texture2D" uid="uid://w63u5nvlagnr" path="res://assets/textures/weapon_shotgun.png" id="2_we1nm"]
+[ext_resource type="Texture2D" uid="uid://cr3e3gwvunro7" path="res://assets/textures/glock.png" id="2_wia78"]
 
 [node name="test_gun" type="Node2D"]
 
@@ -10,7 +10,8 @@ sprite = NodePath("../Sprite")
 BarrelMarker = NodePath("../Barrel")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(7, 0)
-texture = ExtResource("2_we1nm")
+position = Vector2(3, -1)
+texture = ExtResource("2_wia78")
 
 [node name="Barrel" type="Marker2D" parent="."]
+position = Vector2(7, -3)
