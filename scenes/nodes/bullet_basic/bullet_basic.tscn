@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca3ied58y8xse"]
+
+[ext_resource type="PackedScene" uid="uid://cos86y0kdu187" path="res://scenes/components/bulletComponent/bullet_component.tscn.tscn" id="1_bu3t6"]
+[ext_resource type="Texture2D" uid="uid://cm8d73j713rv7" path="res://assets/textures/bullet.png" id="1_n8crh"]
+[ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="2_wwnpp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x0fw6"]
+radius = 3.16228
+
+[node name="BulletBasic" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n8crh")
+
+[node name="BulletComponent" parent="." instance=ExtResource("1_bu3t6")]
+
+[node name="hitbox_module" parent="BulletComponent" instance=ExtResource("2_wwnpp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletComponent/hitbox_module"]
+shape = SubResource("CircleShape2D_x0fw6")

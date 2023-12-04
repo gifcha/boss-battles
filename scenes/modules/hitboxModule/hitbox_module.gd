@@ -1,5 +1,5 @@
 extends Node2D
-class_name hitbox_module
+class_name Hitbox
 
 
 signal hitbox_entered
