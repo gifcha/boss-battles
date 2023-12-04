@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctilpsi4taama"]
+
+[ext_resource type="Script" path="res://scenes/components/gun/gun.gd" id="1_30tvq"]
+
+[node name="gun_component" type="Node2D"]
+script = ExtResource("1_30tvq")
