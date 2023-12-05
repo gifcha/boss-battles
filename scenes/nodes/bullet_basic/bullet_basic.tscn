@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca3ied58y8xse"]
+[gd_scene load_steps=6 format=3 uid="uid://ca3ied58y8xse"]
 
-[ext_resource type="PackedScene" uid="uid://cos86y0kdu187" path="res://scenes/components/bulletComponent/bullet_component.tscn.tscn" id="1_bu3t6"]
+[ext_resource type="Script" path="res://scenes/nodes/bullet_basic/bullet_basic.gd" id="1_22u7k"]
+[ext_resource type="PackedScene" uid="uid://cos86y0kdu187" path="res://scenes/components/bulletComponent/bullet_component.tscn" id="1_bu3t6"]
 [ext_resource type="Texture2D" uid="uid://cm8d73j713rv7" path="res://assets/textures/bullet.png" id="1_n8crh"]
 [ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="2_wwnpp"]
 
@@ -8,6 +9,7 @@
 radius = 3.16228
 
 [node name="BulletBasic" type="Node2D"]
+script = ExtResource("1_22u7k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_n8crh")

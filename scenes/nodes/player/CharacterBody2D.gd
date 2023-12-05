@@ -3,9 +3,9 @@ class_name Player
 
 @export var movement_speed: float
 
-func calculateRealMovementSpeed(speed, screen_scale, pixels_per_unit):
+func calculateRealMovementSpeed(speed, screen_scale):
 	# speed * screen_scale * pixels_per_unit
-	speed = speed * screen_scale * 100
+	speed = speed * screen_scale * Global.UNIT_SIZE
 	return speed
 
 
@@ -18,7 +18,7 @@ func setVelocity(direction, speed):
 
 func _ready():
 	# multiply speed by the game window scale setting
-	movement_speed = calculateRealMovementSpeed(movement_speed, get_tree().root.content_scale_factor, 100)
+	movement_speed = calculateRealMovementSpeed(movement_speed, get_tree().root.content_scale_factor)
 	
 
 func _physics_process(delta):

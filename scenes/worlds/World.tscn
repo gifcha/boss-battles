@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dugjvm260kv58"]
 
-[ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ceqv5"]
+[ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ttkkq"]
 
 [sub_resource type="Gradient" id="Gradient_gvy4u"]
 offsets = PackedFloat32Array(0, 0.735484, 1)
@@ -18,7 +18,7 @@ generate_mipmaps = false
 color_ramp = SubResource("Gradient_gvy4u")
 noise = SubResource("FastNoiseLite_8dl7g")
 
-[node name="Level" type="Node2D"]
+[node name="World" type="Node2D"]
 position = Vector2(372, 251)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -26,4 +26,4 @@ position = Vector2(-4, 1)
 scale = Vector2(1.033, 1)
 texture = SubResource("NoiseTexture2D_7jkls")
 
-[node name="player" parent="." instance=ExtResource("1_ceqv5")]
+[node name="player" parent="." instance=ExtResource("1_ttkkq")]
