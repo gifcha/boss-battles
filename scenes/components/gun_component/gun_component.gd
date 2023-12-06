@@ -5,6 +5,7 @@ extends Node2D
 @export var Sprite: Sprite2D
 @export var BarrelMarker: Marker2D
 @export var Bullet: BulletNode
+@onready var gunPointVector = (BarrelMarker.position - position).normalized()
 
 
 @export_group("Gun Properties")
@@ -14,8 +15,9 @@ extends Node2D
 @export var AfterShotDelay: float ## Delay (in seconds) AFTER each shot
 @export var BeforeShotDelay: float ## Delay (in seconds) BEFORE each shot
 
-func spawnBullet():
+func spawnBullet(global_pos, direction):
 	var newBullet = Global.spawnNode(Bullet, Global.getRootNode(self))
+	newBullet.global_position = global_pos
 	return newBullet
 
 func canShoot():
@@ -25,4 +27,4 @@ func reload():
 	print("reloading")
 
 func shoot():
-	pass
+	spawnBullet(BarrelMarker.global_position, gunPointVector)

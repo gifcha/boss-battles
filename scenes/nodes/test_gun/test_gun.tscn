@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvg6jsllvpcmt"]
+[gd_scene load_steps=4 format=3 uid="uid://cvg6jsllvpcmt"]
 
 [ext_resource type="PackedScene" uid="uid://ctilpsi4taama" path="res://scenes/components/gun_component/gun.tscn" id="1_3oi55"]
+[ext_resource type="Script" path="res://scenes/nodes/test_gun/test_gun.gd" id="1_yo5gl"]
 [ext_resource type="Texture2D" uid="uid://cr3e3gwvunro7" path="res://assets/textures/glock.png" id="2_wia78"]
 
 [node name="test_gun" type="Node2D"]
+script = ExtResource("1_yo5gl")
 
 [node name="gun" parent="." node_paths=PackedStringArray("BarrelMarker") instance=ExtResource("1_3oi55")]
 BarrelMarker = NodePath("../Barrel")
