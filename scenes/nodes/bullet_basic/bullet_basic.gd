@@ -1,4 +1,4 @@
-extends Node2D
+extends BulletComponent
 class_name BulletNode
 
 

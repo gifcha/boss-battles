@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dugjvm260kv58"]
+[gd_scene load_steps=5 format=3 uid="uid://dugjvm260kv58"]
 
 [ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ttkkq"]
-[ext_resource type="PackedScene" uid="uid://cvg6jsllvpcmt" path="res://scenes/nodes/test_gun/test_gun.tscn" id="2_a7eeo"]
 
 [sub_resource type="Gradient" id="Gradient_gvy4u"]
 offsets = PackedFloat32Array(0, 0.735484, 1)
@@ -28,6 +27,3 @@ scale = Vector2(1.033, 1)
 texture = SubResource("NoiseTexture2D_7jkls")
 
 [node name="player" parent="." instance=ExtResource("1_ttkkq")]
-
-[node name="test_gun" parent="player" instance=ExtResource("2_a7eeo")]
-position = Vector2(8, 4)

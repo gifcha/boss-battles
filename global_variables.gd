@@ -8,7 +8,7 @@ static func getRootNode(node: Node): ## returns the root node (usually world) of
 	var world = node.get_tree().current_scene
 	return world
 
-static func spawnNode(node: Scene, parentNode: Node): ## spawns a node in the parent node and returns it
-	var newNode = node.new()
-	parentNode.add_child(newNode)
-	return newNode
+static func spawnScene(scene: PackedScene, parentNode: Node): ## spawns a node in the parent node and returns it
+	var node = scene.instantiate()
+	parentNode.add_child(node)
+	return node

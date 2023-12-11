@@ -1,22 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca3ied58y8xse"]
+[gd_scene load_steps=5 format=3 uid="uid://ca3ied58y8xse"]
 
 [ext_resource type="Script" path="res://scenes/nodes/bullet_basic/bullet_basic.gd" id="1_22u7k"]
-[ext_resource type="PackedScene" uid="uid://cos86y0kdu187" path="res://scenes/components/bulletComponent/bullet_component.tscn" id="1_bu3t6"]
 [ext_resource type="Texture2D" uid="uid://cm8d73j713rv7" path="res://assets/textures/bullet.png" id="1_n8crh"]
 [ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="2_wwnpp"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x0fw6"]
-radius = 3.16228
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugc7q"]
+radius = 3.0
 
-[node name="BulletBasic" type="Node2D"]
+[node name="Bullet" type="Node2D" node_paths=PackedStringArray("hitbox")]
 script = ExtResource("1_22u7k")
+hitbox = NodePath("hitbox_module")
+
+[node name="hitbox_module" parent="." instance=ExtResource("2_wwnpp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_module"]
+shape = SubResource("CircleShape2D_ugc7q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_n8crh")
-
-[node name="BulletComponent" parent="." instance=ExtResource("1_bu3t6")]
-
-[node name="hitbox_module" parent="BulletComponent" instance=ExtResource("2_wwnpp")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletComponent/hitbox_module"]
-shape = SubResource("CircleShape2D_x0fw6")

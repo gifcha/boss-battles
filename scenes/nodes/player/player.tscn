@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=7 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Texture2D" uid="uid://ddongvcx1b2ft" path="res://assets/textures/HazmatEnemy_idle.png" id="2_265hl"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
+[ext_resource type="Script" path="res://scenes/nodes/player/Hand.gd" id="4_5lrgp"]
 [ext_resource type="Script" path="res://scenes/nodes/player/Camera2D.gd" id="4_vo3mc"]
+[ext_resource type="PackedScene" uid="uid://cvg6jsllvpcmt" path="res://scenes/nodes/test_gun/test_gun.tscn" id="5_e2rmc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ygvgb"]
 radius = 3.60555
@@ -20,3 +22,10 @@ texture = ExtResource("2_265hl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 5)
 shape = SubResource("CircleShape2D_ygvgb")
+
+[node name="Hand" type="RayCast2D" parent="."]
+target_position = Vector2(9, 0)
+script = ExtResource("4_5lrgp")
+
+[node name="test_gun" parent="Hand" instance=ExtResource("5_e2rmc")]
+position = Vector2(9, 0)
