@@ -152,7 +152,6 @@ script = ExtResource("2_lhuoy")
 movement_speed = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
 script = ExtResource("4_vo3mc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

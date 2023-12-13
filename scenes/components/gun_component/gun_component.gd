@@ -5,8 +5,6 @@ class_name GunComponent
 @export var Sprite: Sprite2D
 @export var BarrelMarker: Marker2D
 @export var BulletScene: PackedScene
-var gunDirection = Vector2(0,0)
-
 
 @export_group("Gun Properties")
 @export var BulletSpeed: float ## Distance in units, the bullet travels in a second (1 unit = 100px) 
@@ -16,6 +14,17 @@ var gunDirection = Vector2(0,0)
 @export var BeforeShotDelay: float ## Delay (in seconds) BEFORE each shot
 @export var Spray: float
 
+
+var gunDirection = Vector2(0,0)
+@onready var originalBarrelPos = BarrelMarker.position
+
+func setFlip(f : bool):
+	if f == true:
+		Sprite.flip_v = true
+		BarrelMarker.position.y = -originalBarrelPos.y
+	else:
+		Sprite.flip_v = false
+		BarrelMarker.position.y = originalBarrelPos.y
 
 
 func getGunDirection():
@@ -50,6 +59,9 @@ func shoot():
 
 
 func _ready():
+	pass
+
+func _process(delta):
 	pass
 
 
