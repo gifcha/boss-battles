@@ -2,7 +2,7 @@ extends Node2D
 class_name GunComponent
 
 @export_group("Required Nodes")
-@export var Sprite: Sprite2D
+@export var Sprite: AnimatedSprite2D
 @export var BarrelMarker: Marker2D
 @export var BulletScene: PackedScene
 
