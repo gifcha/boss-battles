@@ -14,8 +14,8 @@ class_name GunComponent
 @export var BeforeShotDelay: float ## Delay (in seconds) BEFORE each shot
 @export var Spray: float
 
-
 var gunDirection = Vector2(0,0)
+@onready var player = Global.player # reference to player node
 @onready var originalBarrelPos = BarrelMarker.position
 
 func setFlip(f : bool):
@@ -50,10 +50,13 @@ func reload():
 	print("reloading")
 
 
+signal shotSignal
+
 func shoot():
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
 	bullet.speed = BulletSpeed
 	bullet.damage = BulletDamage
+	shotSignal.emit()
 
 
 

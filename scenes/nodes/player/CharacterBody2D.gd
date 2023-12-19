@@ -17,6 +17,9 @@ func setVelocity(direction, speed):
 
 
 func _ready():
+	# set global reference to player
+	Global.player = self
+	
 	# multiply speed by the game window scale setting
 	movement_speed = calculateRealMovementSpeed(movement_speed, get_tree().root.content_scale_factor)
 	
