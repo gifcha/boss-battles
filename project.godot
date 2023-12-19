@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalVariables="*res://global_variables.gd"
-SignalController="*res://signal_controller.gd"
 
 [display]
 

@@ -50,12 +50,13 @@ func reload():
 	print("reloading")
 
 
+signal shotSignal
 
 func shoot():
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
 	bullet.speed = BulletSpeed
 	bullet.damage = BulletDamage
-	SignalController.node.gunShotSignal.emit()
+	shotSignal.emit()
 
 
 

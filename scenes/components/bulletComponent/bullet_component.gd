@@ -10,13 +10,15 @@ class_name BulletComponent
 
 var parent: Node2D
 
+func setVelocity(speed, direction):
+	velocity = direction * speed
 
 func hit():
 	print("HIT")
 
 
 func _ready():
-	Signals.node.hitbox_entered.connect(hit)
+	hitbox.hitbox_entered.connect(hit)
 	parent = get_parent()
 	
 
