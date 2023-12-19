@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvg6jsllvpcmt"]
+[gd_scene load_steps=9 format=3 uid="uid://cvg6jsllvpcmt"]
 
 [ext_resource type="Script" path="res://scenes/nodes/test_gun/test_gun.gd" id="1_yo5gl"]
 [ext_resource type="PackedScene" uid="uid://ca3ied58y8xse" path="res://scenes/nodes/bullet_basic/bullet_basic.tscn" id="2_qcigg"]
 [ext_resource type="Texture2D" uid="uid://cr3e3gwvunro7" path="res://assets/textures/guns/glock/glock.png" id="3_xjit5"]
-[ext_resource type="AudioStream" uid="uid://06han64us32i" path="res://assets/sounds/guns/Hand_Gun.wav" id="4_co0t8"]
 [ext_resource type="Texture2D" uid="uid://djmi4u7pyn4yx" path="res://assets/textures/guns/glock/glock_shoot_1.png" id="5_ve0o0"]
 [ext_resource type="Texture2D" uid="uid://b86eepg0efbcs" path="res://assets/textures/guns/glock/glock_shoot_2.png" id="6_rx406"]
 
@@ -34,28 +33,13 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 0]
 }
-tracks/2/type = "audio"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("shootAudio")
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
 tracks/2/interp = 1
-tracks/2/loop_wrap = true
+tracks/2/loop_wrap = false
 tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0161219,
-"start_offset": 0.0,
-"stream": ExtResource("4_co0t8")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/2/use_blend = true
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.162704),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -111,4 +95,5 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -1)
+rotation = -0.523599
 sprite_frames = SubResource("SpriteFrames_ixqai")
