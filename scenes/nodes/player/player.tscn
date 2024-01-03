@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=28 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
+[ext_resource type="PackedScene" uid="uid://bo6u8gmm277ec" path="res://scenes/nodes/player/ScreenShakeController/ScreenShakeController.tscn" id="3_il28j"]
 [ext_resource type="Script" path="res://scenes/nodes/player/Hand.gd" id="4_5lrgp"]
 [ext_resource type="Texture2D" uid="uid://d2s3u5ctueter" path="res://assets/textures/player/Character_Down.png" id="4_lod7w"]
 [ext_resource type="Script" path="res://scenes/nodes/player/Camera2D.gd" id="4_vo3mc"]
@@ -154,6 +155,8 @@ movement_speed = 50.0
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 script = ExtResource("4_vo3mc")
+
+[node name="ScreenShakeController" parent="Camera2D" instance=ExtResource("3_il28j")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
