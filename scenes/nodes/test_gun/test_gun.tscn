@@ -82,6 +82,7 @@ BulletSpeed = 5.0
 BulletDamage = 1
 ReloadTime = 1.0
 Spray = 1.0
+DirectionalShakeAmount = 10.0
 
 [node name="Barrel" type="Marker2D" parent="."]
 position = Vector2(7, -3)

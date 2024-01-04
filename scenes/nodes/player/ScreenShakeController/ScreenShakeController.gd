@@ -1,16 +1,52 @@
 extends Node2D
 
+const DEBUG = false
 var camera : Camera2D
-var dirShakeAmount = 0.0
-var ShakeAmount = 0.0
+var speed = 100
+
+var directionalShake: Vector2 = Vector2(0, 0)
+var originalOffset: Vector2 = Vector2(0, 0)
+var currentShakeAmount: float = 0
 
 
-func directionalScreenShake(direction: Vector2, amount: float, delta):
-	direction = direction.normalized()
-	var shakePos = direction * amount
+func setDirectionalShake(shakeAmount: float, d: Vector2):
+	# d = direction
 	
+	# doesnt set anything if the new shake amount is smaller than current
+	if currentShakeAmount > shakeAmount:
+		return
+	directionalShake = shakeAmount * d.normalized()
+	originalOffset = camera.offset
+	print('ScreenShakeController setDirectionalShake called, returned: ', directionalShake)
+
+
+
 
 func _ready():
 	camera = get_parent()
+	
+	# connects setDirectionalShake function to directionalScreenShake signal
+	SignalController.connect("directionalScreenShake", setDirectionalShake)
+	print("ScreenShakeController ready")
+
+
+func _process(delta):
+	if camera == null:
+		print("ScreenShakeController camera = null")
+		return
+	
+	if directionalShake != originalOffset:
+		camera.offset = camera.offset.move_toward(directionalShake, speed * delta)
+		directionalShake = directionalShake.move_toward(originalOffset, speed * delta)
+	elif camera.offset != originalOffset:
+		camera.offset = camera.offset.move_toward(originalOffset, speed * delta)
+	
+
+
+
+
+
+
+
 
 

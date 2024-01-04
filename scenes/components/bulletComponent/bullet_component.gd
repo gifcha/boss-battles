@@ -5,13 +5,9 @@ class_name BulletComponent
 
 @onready var speed: int
 @onready var direction: Vector2
-@onready var velocity: Vector2
 @onready var damage: int
 
 var parent: Node2D
-
-func setVelocity(speed, direction):
-	velocity = direction * speed
 
 func hit():
 	print("HIT")
@@ -23,4 +19,5 @@ func _ready():
 	
 
 func _physics_process(delta):
-	position += direction * speed
+	var velocity = direction * speed * Global.UNIT_SIZE * delta
+	position += velocity

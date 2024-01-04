@@ -13,6 +13,7 @@ class_name GunComponent
 @export var AfterShotDelay: float ## Delay (in seconds) AFTER each shot
 @export var BeforeShotDelay: float ## Delay (in seconds) BEFORE each shot
 @export var Spray: float
+@export var DirectionalShakeAmount: float
 
 var gunDirection = Vector2(0,0)
 @onready var player = Global.player # reference to player node
@@ -42,6 +43,10 @@ func spawnBullet(global_pos, direction):
 	return newBullet
 
 
+func setScreenShake(shakeAmount, direction):
+	SignalController.emit_signal("directionalScreenShake", shakeAmount, direction)
+
+
 func canShoot():
 	return true
 
@@ -50,14 +55,11 @@ func reload():
 	print("reloading")
 
 
-signal shotSignal
-
 func shoot():
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
 	bullet.speed = BulletSpeed
 	bullet.damage = BulletDamage
-	shotSignal.emit()
-
+	setScreenShake(DirectionalShakeAmount, -gunDirection)
 
 
 
