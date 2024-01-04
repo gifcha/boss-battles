@@ -15,6 +15,11 @@ class_name GunComponent
 @export var Spray: float
 @export var DirectionalShakeAmount: float
 
+@export_group("Sounds")
+@export var ShotSound: AudioStream
+@export var ReloadSound: AudioStream
+@export var EquipSound: AudioStream
+
 var gunDirection = Vector2(0,0)
 @onready var player = Global.player # reference to player node
 @onready var originalBarrelPos = BarrelMarker.position
@@ -37,10 +42,11 @@ func getGunDirection():
 
 
 func spawnBullet(global_pos, direction):
-	var newBullet = Global.spawnScene(BulletScene, Global.getRootNode(self))
-	newBullet.global_position = global_pos
-	newBullet.direction = direction
-	return newBullet
+	var Bullet = Global.spawnScene(BulletScene, Global.getRootNode(self))
+	Bullet.global_position = global_pos
+	Bullet.direction = direction
+	Bullet.sound = ShotSound
+	return Bullet
 
 
 func setScreenShake(shakeAmount, direction):

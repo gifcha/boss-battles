@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvg6jsllvpcmt"]
+[gd_scene load_steps=10 format=3 uid="uid://cvg6jsllvpcmt"]
 
 [ext_resource type="Script" path="res://scenes/nodes/test_gun/test_gun.gd" id="1_yo5gl"]
 [ext_resource type="PackedScene" uid="uid://ca3ied58y8xse" path="res://scenes/nodes/bullet_basic/bullet_basic.tscn" id="2_qcigg"]
+[ext_resource type="AudioStream" uid="uid://06han64us32i" path="res://assets/sounds/guns/Hand_Gun.wav" id="3_nco2h"]
 [ext_resource type="Texture2D" uid="uid://cr3e3gwvunro7" path="res://assets/textures/guns/glock/glock.png" id="3_xjit5"]
 [ext_resource type="Texture2D" uid="uid://djmi4u7pyn4yx" path="res://assets/textures/guns/glock/glock_shoot_1.png" id="5_ve0o0"]
 [ext_resource type="Texture2D" uid="uid://b86eepg0efbcs" path="res://assets/textures/guns/glock/glock_shoot_2.png" id="6_rx406"]
@@ -83,11 +84,10 @@ BulletDamage = 1
 ReloadTime = 1.0
 Spray = 1.0
 DirectionalShakeAmount = 10.0
+ShotSound = ExtResource("3_nco2h")
 
 [node name="Barrel" type="Marker2D" parent="."]
 position = Vector2(7, -3)
-
-[node name="shootAudio" type="AudioStreamPlayer2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
