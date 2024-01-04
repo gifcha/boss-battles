@@ -17,7 +17,6 @@ func setDirectionalShake(shakeAmount: float, d: Vector2):
 		return
 	directionalShake = shakeAmount * d.normalized()
 	originalOffset = camera.offset
-	print('ScreenShakeController setDirectionalShake called, returned: ', directionalShake)
 
 
 
@@ -27,12 +26,12 @@ func _ready():
 	
 	# connects setDirectionalShake function to directionalScreenShake signal
 	SignalController.connect("directionalScreenShake", setDirectionalShake)
-	print("ScreenShakeController ready")
-
+	
+	
 
 func _process(delta):
 	if camera == null:
-		print("ScreenShakeController camera = null")
+		print("ScreenShakeController error! camera = null")
 		return
 	
 	if directionalShake != originalOffset:

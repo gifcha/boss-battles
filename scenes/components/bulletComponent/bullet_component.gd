@@ -16,9 +16,7 @@ func hit():
 
 func playSound(sound: AudioStream):
 	AudioPlayer.stream = sound
-	print("Set bullet sound")
 	AudioPlayer.play(0)
-	print("Played bullet sound")
 
 
 func _ready():
