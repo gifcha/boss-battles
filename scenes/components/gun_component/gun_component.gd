@@ -23,6 +23,11 @@ class_name GunComponent
 var gunDirection = Vector2(0,0)
 @onready var player = Global.player # reference to player node
 @onready var originalBarrelPos = BarrelMarker.position
+var timer: Timer = Timer.new()
+
+
+
+# gun rotation and flipping
 
 func setFlip(f : bool):
 	if f == true:
@@ -41,6 +46,9 @@ func getGunDirection():
 	return gunDirection
 
 
+
+# shooting
+
 func spawnBullet(global_pos, direction):
 	var Bullet = Global.spawnScene(BulletScene, Global.getRootNode(self))
 	Bullet.global_position = global_pos
@@ -54,7 +62,10 @@ func setScreenShake(shakeAmount, direction):
 
 
 func canShoot():
-	return true
+	var flag = false
+	if timer.time_left <= 0:
+		flag = true
+	return flag
 
 
 func reload():
@@ -62,18 +73,34 @@ func reload():
 
 
 func shoot():
+	if canShoot() == false:
+		return
+	
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
 	bullet.speed = BulletSpeed
 	bullet.damage = BulletDamage
 	setScreenShake(DirectionalShakeAmount, -gunDirection)
+	timer.start(AfterShotDelay)
+
+
+
+# timer
+
+func initTimer():
+	add_child(timer)
+	timer.autostart = true
+	timer.one_shot = true
+	timer.wait_time = AfterShotDelay
+	timer.stop
+
 
 
 
 func _ready():
-	pass
+	initTimer()
 
 func _process(delta):
-	pass
+	print(timer.time_left)
 
 
 func _physics_process(delta):

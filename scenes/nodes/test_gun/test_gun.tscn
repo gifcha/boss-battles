@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvg6jsllvpcmt"]
+[gd_scene load_steps=11 format=3 uid="uid://cvg6jsllvpcmt"]
 
 [ext_resource type="Script" path="res://scenes/nodes/test_gun/test_gun.gd" id="1_yo5gl"]
 [ext_resource type="PackedScene" uid="uid://ca3ied58y8xse" path="res://scenes/nodes/bullet_basic/bullet_basic.tscn" id="2_qcigg"]
@@ -47,8 +47,12 @@ tracks/2/keys = {
 "values": [-0.523599, -0.785398, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_x50s1"]
+resource_name = "idle"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_687rh"]
 _data = {
+"idle": SubResource("Animation_x50s1"),
 "shoot": SubResource("Animation_dosh0")
 }
 
@@ -82,6 +86,7 @@ BulletScene = ExtResource("2_qcigg")
 BulletSpeed = 5.0
 BulletDamage = 1
 ReloadTime = 1.0
+AfterShotDelay = 0.1
 Spray = 1.0
 DirectionalShakeAmount = 10.0
 ShotSound = ExtResource("3_nco2h")
@@ -96,5 +101,4 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -1)
-rotation = -0.523599
 sprite_frames = SubResource("SpriteFrames_ixqai")
