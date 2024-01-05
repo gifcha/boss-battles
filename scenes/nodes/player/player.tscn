@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=30 format=3 uid="uid://cdw1wl2xiokmu"]
 
+[ext_resource type="Script" path="res://scenes/nodes/player/MovementController.gd" id="2_jybf5"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
 [ext_resource type="PackedScene" uid="uid://bo6u8gmm277ec" path="res://scenes/nodes/player/ScreenShakeController/ScreenShakeController.tscn" id="3_il28j"]
 [ext_resource type="Script" path="res://scenes/nodes/player/Hand.gd" id="4_5lrgp"]
@@ -150,8 +151,12 @@ animations = [{
 radius = 3.60555
 
 [node name="player" type="CharacterBody2D"]
+floor_constant_speed = true
 script = ExtResource("2_lhuoy")
 movement_speed = 50.0
+
+[node name="MovementController" type="Node" parent="."]
+script = ExtResource("2_jybf5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
