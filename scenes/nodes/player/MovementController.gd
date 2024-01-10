@@ -1,47 +1,41 @@
 extends Node
 
 @onready var player: Player
-
-var state = "idle"
-
-func calculateRealMovementSpeed(speed, screen_scale):
-	return speed * screen_scale * Global.UNIT_SIZE
+@onready var animation: AnimationPlayer
+@onready var rollTimer = $RollTimer
 
 
 func setVelocity(direction, speed):
-	var motion = direction
-	motion.x = motion.x * speed
-	motion.y = motion.y * speed
-	player.velocity = motion
+	player.velocity = direction * speed * Global.UNIT_SIZE
 
 func canRun():
 	var flag = true
-	# if is rolling false
+	if player.isRolling == true:
+		flag = false
 	return flag
+
 
 func canRoll():
 	var flag = true
-	# if is rolling false
+	if rollTimer.time_left > 0:
+		flag = false
 	return flag
 
 func roll():
-	if canRoll():
-		var direction = InputModule.getMovementInputDirection()
-		
+	var direction = InputModule.getMovementInputDirection()
+	player.velocity = direction * player.rollSpeed;
 
+func startRollTimer():
+	rollTimer.start(player.rollDelay)
 
 
 func _ready():
 	player = get_parent()
-	
-	# multiply speed by the game window scale setting
-	player.movement_speed = calculateRealMovementSpeed(player.movement_speed, get_tree().root.content_scale_factor)
-	
 
 func _physics_process(delta):
 	if canRun():
-		setVelocity(InputModule.getMovementInputDirection(), player.movement_speed*delta)
-	if canRoll() * Input.is_action_just_pressed("left_click"):
-		pass
+		setVelocity(InputModule.getMovementInputDirection(), player.movementSpeed*delta)
+	if canRoll() and Input.is_action_just_pressed("right_click"):
+		player.animation.play("roll")
 	player.move_and_slide()
 

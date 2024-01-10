@@ -2,16 +2,19 @@ extends CharacterBody2D
 class_name Player
 
 # movement
-@export var movement_speed: float
-@export var roll_speed: float
-@export var roll_distance: float
+@export var movementSpeed: float
+@export var rollSpeed: float
+@export var rollDistance: float
+@export var isRolling: bool = false
+@export var rollDelay: float
 
-
-
+@onready var animation = $AnimationPlayer
 
 func _ready():
 	# set global reference to player
 	Global.player = self
+	pass
+	pass
 
 func _physics_process(delta):
 	pass
