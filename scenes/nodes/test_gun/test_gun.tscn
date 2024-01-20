@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://djmi4u7pyn4yx" path="res://assets/textures/guns/glock/glock_shoot_1.png" id="5_ve0o0"]
 [ext_resource type="Texture2D" uid="uid://b86eepg0efbcs" path="res://assets/textures/guns/glock/glock_shoot_2.png" id="6_rx406"]
 
+[sub_resource type="Animation" id="Animation_x50s1"]
+resource_name = "idle"
+
 [sub_resource type="Animation" id="Animation_dosh0"]
 resource_name = "shoot"
 length = 0.217
@@ -46,9 +49,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [-0.523599, -0.785398, 0.0]
 }
-
-[sub_resource type="Animation" id="Animation_x50s1"]
-resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_687rh"]
 _data = {

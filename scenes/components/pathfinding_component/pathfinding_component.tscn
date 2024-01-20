@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dgx1c6lttvgv8"]
+
+[node name="PathfindingComponent" type="Node2D"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

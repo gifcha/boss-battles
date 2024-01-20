@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dugjvm260kv58"]
+[gd_scene load_steps=6 format=3 uid="uid://dugjvm260kv58"]
 
 [ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ttkkq"]
 
@@ -18,12 +18,22 @@ generate_mipmaps = false
 color_ramp = SubResource("Gradient_gvy4u")
 noise = SubResource("FastNoiseLite_8dl7g")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pqhyb"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-125, -74, -85, -110, 4, -113, 140, -83, 142, -25, -21, -27, -19, 42, -137, 44)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="World" type="Node2D"]
 position = Vector2(372, 251)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4, 1)
+position = Vector2(-7, 34)
 scale = Vector2(1.033, 1)
 texture = SubResource("NoiseTexture2D_7jkls")
 
 [node name="player" parent="." instance=ExtResource("1_ttkkq")]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_pqhyb")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+vertices = PackedVector2Array(-81, -51, 4, -51, 0, -30, -84, -26)
