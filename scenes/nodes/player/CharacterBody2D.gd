@@ -13,8 +13,6 @@ class_name Player
 func _ready():
 	# set global reference to player
 	Global.player = self
-	pass
-	pass
 
 func _physics_process(delta):
 	pass

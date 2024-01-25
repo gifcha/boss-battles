@@ -226,7 +226,6 @@ script = ExtResource("2_jybf5")
 
 [node name="RollTimer" type="Timer" parent="MovementController"]
 process_callback = 0
-wait_time = 0.002
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

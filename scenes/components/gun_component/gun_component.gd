@@ -76,8 +76,12 @@ func canShoot():
 
 
 func reload():
-	print("reloading")
-
+	var spent = MagSize - magAmmo
+	if spent > 0 and ammo > 0:
+		print("reloading")
+		var r = min(ammo, spent) # if theres less ammo than spent amount then this uses the avaliable ammo
+		ammo -= r
+		magAmmo += r
 
 func shoot():
 	if canShoot() == false:
