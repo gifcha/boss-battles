@@ -7,6 +7,8 @@ class_name GunComponent
 @export var BulletScene: PackedScene
 
 @export_group("Gun Properties")
+@export var MaxAmmo: int
+@export var MagSize: int
 @export var BulletSpeed: float ## Distance in units, the bullet travels in a second (1 unit = 100px) 
 @export var BulletDamage: int
 @export var ReloadTime: float
@@ -24,6 +26,9 @@ var gunDirection = Vector2(0,0)
 @onready var player = Global.player # reference to player node
 @onready var originalBarrelPos = BarrelMarker.position
 var timer: Timer = Timer.new()
+var ammo: int
+var magAmmo: int
+
 
 
 
@@ -62,9 +67,11 @@ func setScreenShake(shakeAmount, direction):
 
 
 func canShoot():
-	var flag = false
-	if timer.time_left <= 0:
-		flag = true
+	var flag = true
+	if timer.time_left > 0:
+		flag = false
+	elif magAmmo <= 0:
+		flag = false
 	return flag
 
 
@@ -75,6 +82,8 @@ func reload():
 func shoot():
 	if canShoot() == false:
 		return
+	
+	magAmmo -= 1
 	
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
 	bullet.speed = BulletSpeed
@@ -98,6 +107,8 @@ func initTimer():
 
 func _ready():
 	initTimer()
+	ammo = MaxAmmo
+	magAmmo = MagSize
 
 func _process(delta):
 	print(timer.time_left)
