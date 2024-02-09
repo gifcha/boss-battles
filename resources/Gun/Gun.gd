@@ -1,8 +1,7 @@
-extends Node2D
-class_name GunComponent
+extends Item
+class_name Gun
 
 @export_group("Required Nodes")
-@export var Sprite: AnimatedSprite2D
 @export var BarrelMarker: Marker2D
 @export var BulletScene: PackedScene
 
@@ -34,18 +33,19 @@ var magAmmo: int
 
 # gun rotation and flipping
 
-func setFlip(f : bool):
-	if f == true:
-		Sprite.flip_v = true
+
+func setFlip(flip: bool):
+	# overrides item setFlip function to add barrel flip
+	super.setFlip(flip)
+	if flip == true:
 		BarrelMarker.position.y = -originalBarrelPos.y
 	else:
-		Sprite.flip_v = false
 		BarrelMarker.position.y = originalBarrelPos.y
 
 
 func getGunDirection():
 	var temp = BarrelMarker.position
-	BarrelMarker.position.y = 0 + randf_range(-Spray, Spray)
+	BarrelMarker.position.y = randf_range(-Spray, Spray)
 	gunDirection = (BarrelMarker.global_position - self.global_position).normalized()
 	BarrelMarker.position = temp
 	return gunDirection

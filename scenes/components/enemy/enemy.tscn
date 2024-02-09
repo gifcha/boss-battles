@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bggvj53jyje88"]
+[gd_scene load_steps=5 format=3 uid="uid://bggvj53jyje88"]
 
+[ext_resource type="Script" path="res://scenes/components/enemy/enemy.gd" id="1_8sx1f"]
 [ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="1_563bq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_py765"]
@@ -7,6 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76mon"]
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_8sx1f")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 motion_mode = 1

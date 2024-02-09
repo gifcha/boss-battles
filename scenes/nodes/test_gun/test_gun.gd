@@ -1,4 +1,4 @@
-extends GunComponent
+extends Gun
 
 @onready var animPlayer = $AnimationPlayer
 
