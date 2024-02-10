@@ -44,11 +44,15 @@ func setFlip(flip: bool):
 
 
 func getGunDirection():
-	var temp = BarrelMarker.position
-	BarrelMarker.position.y = randf_range(-Spray, Spray)
-	gunDirection = (BarrelMarker.global_position - self.global_position).normalized()
-	BarrelMarker.position = temp
-	return gunDirection
+	var direction = Vector2();
+	direction = get_global_mouse_position() - self.global_position
+	
+	var randomSpray = randf_range(-Spray, Spray)
+	randomSpray = deg_to_rad(randomSpray)
+	
+	direction = direction.rotated(randomSpray)
+	direction = direction.normalized()
+	return direction
 
 
 

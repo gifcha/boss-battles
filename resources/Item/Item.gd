@@ -11,6 +11,11 @@ func setFlip(flip : bool):
 	else:
 		Sprite.flip_v = false
 
+func getItemDirection():
+	var direction = Vector2()
+	direction = get_parent() # TODO get direction based on the rotation of hand(parent)
+	return direction
+
 
 func use():
 	pass

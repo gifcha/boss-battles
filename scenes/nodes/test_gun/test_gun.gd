@@ -4,7 +4,7 @@ extends Gun
 
 
 func _ready():
-	super() # runs GunComponent's ready function
+	super() # runs Gun class ready function
 
 
 func _process(delta):
