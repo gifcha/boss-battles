@@ -20,9 +20,9 @@ func create_region(navPolygon):
 	
 
 
-func request_path(map, origin, target):
+func request_path(origin, target):
 	var path = []
-	path = NavigationServer2D.map_get_path(map, origin, target, false, 1)
+	path = NavigationServer2D.map_get_path(MAP, origin, target, false, 1)
 	return path
 
 
