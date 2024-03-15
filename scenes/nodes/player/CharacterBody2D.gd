@@ -10,9 +10,17 @@ class_name Player
 
 @onready var animation = $AnimationPlayer
 
+
+func set_global_map():
+	var map = get_world_2d().navigation_map
+	Navigation.MAP = map
+	print("player map: ", map)
+
+
 func _ready():
 	# set global reference to player
 	Global.player = self
+	set_global_map()
 
 func _physics_process(delta):
 	pass

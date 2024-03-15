@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 GlobalVariables="*res://global_variables.gd"
 SignalController="*res://signal_controller.gd"
+Navigation="*res://navigation.gd"
+Debug="*res://Debugger.gd"
 
 [display]
 
