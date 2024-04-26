@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bggvj53jyje88"]
+[gd_scene load_steps=6 format=3 uid="uid://bggvj53jyje88"]
 
 [ext_resource type="Script" path="res://scenes/components/enemy/enemy.gd" id="1_8sx1f"]
 [ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="1_563bq"]
+[ext_resource type="Script" path="res://scenes/components/enemy/movement.gd" id="3_uku2u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_py765"]
 
@@ -21,3 +22,6 @@ shape = SubResource("CircleShape2D_py765")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/hitbox_module"]
 shape = SubResource("RectangleShape2D_76mon")
 debug_color = Color(0.964706, 0.219608, 0.207843, 0.215686)
+
+[node name="movement" type="Node" parent="."]
+script = ExtResource("3_uku2u")

@@ -2,19 +2,14 @@ extends Node2D
 class_name Enemy
 
 @export var speed : int = 100
-var path = PackedVector2Array()
+@export var health : int = 100
 
-func isPathSet():
-	return len(path) > 1
+@onready var movement = $movement
 
-func move_along_path(path: PackedVector2Array, delta):
-	if isPathSet() == false:
-		return
-	
-	global_position.x = move_toward(global_position.x, path[1].x, speed*delta)
-	global_position.y = move_toward(global_position.y, path[1].y, speed*delta)
-	if global_position == path[1]:
-		path.remove_at(0)
+
+func do_damage(damage):
+	self.health -= damage
+	print(damage)
 
 
 func _ready():
@@ -22,8 +17,9 @@ func _ready():
 
 
 func _process(delta):
+	if health < 1:
+		queue_free()
+	
 	
 	if Input.is_action_pressed("space"):
-		path = Navigation.request_path(self.global_position, Global.player.global_position)
-	if path.size() != 0:
-		move_along_path(path, delta)
+		movement.path = Navigation.request_path(self.global_position, Global.player.global_position)

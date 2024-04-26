@@ -11,6 +11,8 @@ class_name BulletComponent
 var parent: Node2D
 static var sound: AudioStream
 
+
+# override this function when making new bullet
 func hit():
 	print("HIT")
 
@@ -20,7 +22,8 @@ func playSound(sound: AudioStream):
 
 
 func _ready():
-	hitbox.hitbox_entered.connect(hit)
+	# TODO pass body to hit()
+	hitbox.hitbox_entered.connect(hit.bind())
 	parent = get_parent()
 	playSound(sound)
 
