@@ -8,7 +8,7 @@ var MAP : RID :
 		MAP = m
 
 
-func create_region(navPolygon):
+func create_region(navPolygon : NavigationPolygon):
 	if MAP == null:
 		Debug.log("Navigation.create_region > MAP is null!")
 		return
@@ -16,13 +16,10 @@ func create_region(navPolygon):
 	NavigationServer2D.region_set_transform(region, Transform2D())
 	NavigationServer2D.region_set_navigation_polygon(region, navPolygon)
 	NavigationServer2D.region_set_map(region, MAP)
-	Debug.log(NavigationServer2D.map_get_regions(MAP))
-	
-
 
 func request_path(origin, target):
 	var path = []
-	path = NavigationServer2D.map_get_path(MAP, origin, target, false, 1)
+	path = NavigationServer2D.map_get_path(MAP, origin, target, true, 1)
 	return path
 
 
