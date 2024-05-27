@@ -43,15 +43,14 @@ func setFlip(flip: bool):
 		BarrelMarker.position.y = originalBarrelPos.y
 
 
-func getGunDirection():
-	var direction = Vector2();
-	direction = get_global_mouse_position() - self.global_position
+func getDirection():
+	# overrides getDirection from "Item" class
+	var direction = super.getDirection() # calls getDirection from "Item" class
 	
 	var randomSpray = randf_range(-Spray, Spray)
 	randomSpray = deg_to_rad(randomSpray)
 	
 	direction = direction.rotated(randomSpray)
-	direction = direction.normalized()
 	return direction
 
 
@@ -123,5 +122,5 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	gunDirection = getGunDirection()
+	gunDirection = getDirection()
 

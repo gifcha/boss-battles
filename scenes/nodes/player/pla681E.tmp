@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=32 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Script" path="res://scenes/nodes/player/MovementController.gd" id="2_jybf5"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://blea14khpxe2i" path="res://assets/textures/player/Character_Left.png" id="5_nspy2"]
 [ext_resource type="Texture2D" uid="uid://slt4v02e3ca8" path="res://assets/textures/player/Character_Right.png" id="6_ana7r"]
 [ext_resource type="Texture2D" uid="uid://dqrtuhy7m2plc" path="res://assets/textures/player/Character_Up.png" id="7_0crfe"]
-[ext_resource type="Script" path="res://scenes/nodes/player/PositionLabel.gd" id="12_fswl0"]
 
 [sub_resource type="Animation" id="Animation_lcy6n"]
 resource_name = "roll"
@@ -259,14 +258,3 @@ script = ExtResource("4_5lrgp")
 
 [node name="test_gun" parent="Hand" instance=ExtResource("5_e2rmc")]
 position = Vector2(9, 0)
-
-[node name="PositionLabel" type="Label" parent="."]
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 3.0
-scale = Vector2(0.3, 0.3)
-text = "POSITION"
-horizontal_alignment = 1
-vertical_alignment = 1
-text_direction = 1
-script = ExtResource("12_fswl0")

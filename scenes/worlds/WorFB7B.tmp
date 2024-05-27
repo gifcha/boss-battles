@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dugjvm260kv58"]
+
+[ext_resource type="Script" path="res://scenes/worlds/NavigationRegion2D.gd" id="1_rybue"]
+[ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ttkkq"]
+[ext_resource type="PackedScene" uid="uid://dgx1c6lttvgv8" path="res://scenes/components/pathfinding_component/pathfinding_component.tscn" id="2_060ha"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sex1g"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-308, -208, 222, -206, 226, 95, -314, 98)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="Gradient" id="Gradient_gvy4u"]
+offsets = PackedFloat32Array(0, 0.735484, 1)
+colors = PackedColorArray(0.0829126, 0.0434394, 0, 1, 0.309984, 0.319002, 0.292107, 1, 0.27876, 0.211145, 0.161605, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8dl7g"]
+noise_type = 2
+frequency = 0.1995
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7jkls"]
+width = 1920
+height = 1080
+generate_mipmaps = false
+color_ramp = SubResource("Gradient_gvy4u")
+noise = SubResource("FastNoiseLite_8dl7g")
+
+[node name="World" type="Node2D"]
+position = Vector2(372, 251)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(38, 8)
+navigation_polygon = SubResource("NavigationPolygon_sex1g")
+travel_cost = 0.0
+script = ExtResource("1_rybue")
+
+[node name="PathfindingComponent" parent="." instance=ExtResource("2_060ha")]
+position = Vector2(-28, -38)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7, 34)
+scale = Vector2(1.033, 1)
+texture = SubResource("NoiseTexture2D_7jkls")
+
+[node name="player" parent="." instance=ExtResource("1_ttkkq")]
+position = Vector2(-15, -42)

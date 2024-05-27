@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/worlds/NavigationRegion2D.gd" id="1_rybue"]
 [ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ttkkq"]
-[ext_resource type="PackedScene" uid="uid://bggvj53jyje88" path="res://scenes/components/enemy/enemy.tscn" id="3_mujur"]
+[ext_resource type="PackedScene" uid="uid://dgx1c6lttvgv8" path="res://scenes/components/pathfinding_component/pathfinding_component.tscn" id="2_060ha"]
 [ext_resource type="Texture2D" uid="uid://ddongvcx1b2ft" path="res://assets/textures/HazmatEnemy_idle.png" id="3_tkgnf"]
 
 [sub_resource type="Gradient" id="Gradient_gvy4u"]
@@ -22,9 +22,9 @@ color_ramp = SubResource("Gradient_gvy4u")
 noise = SubResource("FastNoiseLite_8dl7g")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nrffw"]
-vertices = PackedVector2Array(109, 28, 235, 104, -307, 111, -315, -195, 106, -72, 102, -109, 209, 2, 180, 5, 185, -74, 212, -63, 219, -98, 108, -173, 257, -195, 256, -170)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 9, 8, 5), PackedInt32Array(5, 8, 4), PackedInt32Array(11, 5, 3), PackedInt32Array(11, 3, 12, 13)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-326, -206, 268, -205, 266, -160, 117, -163, 113, -118, 232, -108, 222, -62, 219, 12, 170, 16, 174, -64, 116, -62, 119, 22, 271, 114, -317, 122)])
+vertices = PackedVector2Array(260, 104, -307, 111, -315, -195, 258, -195)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-326, -206, 268, -205, 271, 114, -317, 122)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="World" type="Node2D"]
@@ -42,12 +42,11 @@ navigation_polygon = SubResource("NavigationPolygon_nrffw")
 navigation_layers = 16777215
 script = ExtResource("1_rybue")
 
+[node name="PathfindingComponent" parent="." instance=ExtResource("2_060ha")]
+position = Vector2(-28, -38)
+
+[node name="Sprite2D" type="Sprite2D" parent="PathfindingComponent"]
+texture = ExtResource("3_tkgnf")
+
 [node name="player" parent="." instance=ExtResource("1_ttkkq")]
 position = Vector2(-15, -42)
-
-[node name="Enemy" parent="." instance=ExtResource("3_mujur")]
-position = Vector2(-227, 90)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-texture = ExtResource("3_tkgnf")
