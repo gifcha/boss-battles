@@ -11,7 +11,7 @@ class_name Player
 @onready var animation = $AnimationPlayer
 
 func _ready():
-	# set global reference to player
+	# set global reference to player // test
 	Global.player = self
 
 func _physics_process(delta):
