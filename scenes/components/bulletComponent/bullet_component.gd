@@ -16,6 +16,7 @@ static var sound: AudioStream
 func hit(body):
 	if body.owner.has_method("take_damage"):
 		body.owner.take_damage(damage)
+	queue_free()
 
 func playSound(sound: AudioStream):
 	AudioPlayer.stream = sound
