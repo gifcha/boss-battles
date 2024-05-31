@@ -10,12 +10,4 @@ func _on_body_entered(body):
 
 
 func _on_body_exited(body):
-	hitbox_entered.emit(body)
-
-
-func _on_area_entered(area):
-	hitbox_entered.emit(area)
-
-
-func _on_area_exited(area):
-	hitbox_exited.emit(area)
+	hitbox_exited.emit(body)

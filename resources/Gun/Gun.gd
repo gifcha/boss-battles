@@ -62,6 +62,7 @@ func spawnBullet(global_pos, direction):
 	Bullet.global_position = global_pos
 	Bullet.direction = direction
 	Bullet.sound = ShotSound
+	Bullet.damage = BulletDamage
 	return Bullet
 
 

@@ -14,7 +14,8 @@ static var sound: AudioStream
 
 # override this function when making new bullet
 func hit(body):
-	pass
+	if body.owner.has_method("take_damage"):
+		body.owner.take_damage(damage)
 
 func playSound(sound: AudioStream):
 	AudioPlayer.stream = sound
