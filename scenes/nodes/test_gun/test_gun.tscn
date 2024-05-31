@@ -112,3 +112,4 @@ libraries = {
 position = Vector2(3, -1)
 rotation = -0.523599
 sprite_frames = SubResource("SpriteFrames_ixqai")
+animation = &"shoot"

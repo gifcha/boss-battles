@@ -13,8 +13,8 @@ static var sound: AudioStream
 
 
 # override this function when making new bullet
-func hit():
-	print("HIT")
+func hit(body):
+	pass
 
 func playSound(sound: AudioStream):
 	AudioPlayer.stream = sound
