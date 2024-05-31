@@ -7,13 +7,13 @@ class_name Enemy
 @onready var movement = $movement
 
 
-func do_damage(damage):
+func take_damage(damage):
 	self.health -= damage
 	print(damage)
 
 
 func _ready():
-	pass
+	print("has method: ", self.has_method("take_damage"))
 
 
 func _process(delta):
