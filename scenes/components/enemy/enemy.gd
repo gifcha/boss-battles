@@ -5,6 +5,8 @@ class_name Enemy
 @export var health : int = 100
 
 @onready var movement = $movement
+var ticker : int = 0
+const physicsTick = 60
 
 
 func take_damage(damage):
@@ -13,13 +15,17 @@ func take_damage(damage):
 
 
 func _ready():
-	print("has method: ", self.has_method("take_damage"))
+	pass
 
 
 func _process(delta):
 	if health < 1:
 		queue_free()
 	
+
+func _physics_process(delta):
+	ticker += 1
 	
-	if Input.is_action_pressed("space"):
+	if ticker >= physicsTick:
+		ticker = 0
 		movement.path = Navigation.request_path(self.global_position, Global.player.global_position)

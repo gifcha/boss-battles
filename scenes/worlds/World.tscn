@@ -22,9 +22,9 @@ color_ramp = SubResource("Gradient_gvy4u")
 noise = SubResource("FastNoiseLite_8dl7g")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nrffw"]
-vertices = PackedVector2Array(109, 28, 235, 104, -307, 111, -315, -195, 106, -72, 102, -109, 209, 2, 180, 5, 185, -74, 212, -63, 219, -98, 108, -173, 257, -195, 256, -170)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 9, 8, 5), PackedInt32Array(5, 8, 4), PackedInt32Array(11, 5, 3), PackedInt32Array(11, 3, 12, 13)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-326, -206, 268, -205, 266, -160, 117, -163, 113, -118, 232, -108, 222, -62, 219, 12, 170, 16, 174, -64, 116, -62, 119, 22, 271, 114, -317, 122)])
+vertices = PackedVector2Array(523, -234, 528, 261, -390, 259, -388, -238)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-398, -249, 533, -244, 539, 272, -401, 269)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="World" type="Node2D"]
