@@ -22,7 +22,8 @@ func take_damage(damage):
 	print(damage)
 
 func _ready():
-	set_script(actionManager)
+	pass
+	#set_script(actionManager)
 
 
 func _process(delta):
