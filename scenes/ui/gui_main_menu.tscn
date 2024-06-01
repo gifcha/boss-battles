@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://8rrgire3txdl"]
+[gd_scene load_steps=7 format=3 uid="uid://8rrgire3txdl"]
 
 [ext_resource type="Script" path="res://scenes/ui/gui_main_menu.gd" id="1_c5xyj"]
 [ext_resource type="Texture2D" uid="uid://blglrfg6y5vq5" path="res://scenes/ui/space1.png" id="2_4vyot"]
 [ext_resource type="Texture2D" uid="uid://dbu1w50n8h572" path="res://scenes/ui/stars.png" id="3_fxqoh"]
 [ext_resource type="Script" path="res://scenes/ui/Stars.gd" id="4_5sagm"]
 [ext_resource type="Texture2D" uid="uid://wa4tpou25l7i" path="res://scenes/ui/planets.png" id="5_d4eoh"]
+[ext_resource type="FontFile" uid="uid://ppdgsrk7v47n" path="res://scenes/ui/DeathMachine.ttf" id="6_mnwuc"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -60,6 +61,20 @@ layout_mode = 2
 size_flags_vertical = 4
 focus_neighbor_bottom = NodePath("../StartButton")
 text = "Exit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 74.0
+offset_right = 959.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0.305882, 0.560784, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_mnwuc")
+theme_override_font_sizes/font_size = 81
+text = "Boss-Battles"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

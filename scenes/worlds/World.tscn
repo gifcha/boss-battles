@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dugjvm260kv58"]
+[gd_scene load_steps=10 format=3 uid="uid://dugjvm260kv58"]
 
 [ext_resource type="Script" path="res://scenes/worlds/NavigationRegion2D.gd" id="1_rybue"]
 [ext_resource type="PackedScene" uid="uid://cdw1wl2xiokmu" path="res://scenes/nodes/player/player.tscn" id="1_ttkkq"]
 [ext_resource type="PackedScene" uid="uid://bggvj53jyje88" path="res://scenes/components/enemy/enemy.tscn" id="3_mujur"]
 [ext_resource type="Texture2D" uid="uid://ddongvcx1b2ft" path="res://assets/textures/HazmatEnemy_idle.png" id="3_tkgnf"]
+[ext_resource type="PackedScene" uid="uid://wihysw23ic8p" path="res://scenes/worlds/pause_menu.tscn" id="5_jrleb"]
 
 [sub_resource type="Gradient" id="Gradient_gvy4u"]
 offsets = PackedFloat32Array(0, 0.735484, 1)
@@ -51,3 +52,9 @@ metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 texture = ExtResource("3_tkgnf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_jrleb")]
+size_flags_horizontal = 4
+size_flags_vertical = 4
