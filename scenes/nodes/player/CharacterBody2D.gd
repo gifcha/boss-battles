@@ -14,7 +14,6 @@ class_name Player
 func set_global_map():
 	var map = get_world_2d().navigation_map
 	Navigation.MAP = map
-	print("player map: ", map)
 
 
 func _ready():

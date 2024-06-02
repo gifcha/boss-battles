@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=34 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Script" path="res://scenes/nodes/player/MovementController.gd" id="2_jybf5"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cvg6jsllvpcmt" path="res://scenes/nodes/test_gun/test_gun.tscn" id="5_e2rmc"]
 [ext_resource type="Texture2D" uid="uid://blea14khpxe2i" path="res://assets/textures/player/Character_Left.png" id="5_nspy2"]
 [ext_resource type="Texture2D" uid="uid://slt4v02e3ca8" path="res://assets/textures/player/Character_Right.png" id="6_ana7r"]
+[ext_resource type="PackedScene" uid="uid://wihysw23ic8p" path="res://scenes/worlds/pause_menu.tscn" id="6_mntmi"]
 [ext_resource type="Texture2D" uid="uid://dqrtuhy7m2plc" path="res://assets/textures/player/Character_Up.png" id="7_0crfe"]
 [ext_resource type="Script" path="res://scenes/nodes/player/PositionLabel.gd" id="12_fswl0"]
 
@@ -235,9 +236,16 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("4_vo3mc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="PauseMenu" parent="Camera2D/CanvasLayer" instance=ExtResource("6_mntmi")]
+z_index = 0
+z_as_relative = false
 
 [node name="ScreenShakeController" parent="Camera2D" instance=ExtResource("3_il28j")]
 

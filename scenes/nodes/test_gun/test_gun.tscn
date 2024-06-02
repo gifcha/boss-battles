@@ -27,7 +27,7 @@ tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0203435, 0.161735),
+"times": PackedFloat32Array(0.0203435, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [&"shoot", &"default"]
@@ -51,7 +51,7 @@ tracks/2/path = NodePath("AnimatedSprite2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.162704),
+"times": PackedFloat32Array(0.0198592, 0.1, 0.162704),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.523599, -0.785398, 0.0]
@@ -110,6 +110,4 @@ libraries = {
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -1)
-rotation = -0.523599
 sprite_frames = SubResource("SpriteFrames_ixqai")
-animation = &"shoot"
