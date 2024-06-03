@@ -14,6 +14,7 @@ class_name Enemy
 
 @onready var movement = $movement
 @onready var sprite = $AnimatedSprite2D
+@onready var unflippedSpritePos = sprite.position
 
 
 func take_damage(damage):
@@ -29,11 +30,15 @@ func _process(delta):
 	if health < 1:
 		queue_free()
 	
-	# flip texture depending on movement direction
+	# apgriezt sprite un hitbox atkarībā no kustības
 	if movement.currentMoveVector.x < 0:
 		sprite.flip_h = true
+		$CharacterBody2D/hitbox_module.flip_h = true
+		sprite.position.x = -unflippedSpritePos.x
 	else:
 		sprite.flip_h = false
+		$CharacterBody2D/hitbox_module.flip_h = false
+		sprite.position.x = unflippedSpritePos.x
 	
 
 func _physics_process(delta):

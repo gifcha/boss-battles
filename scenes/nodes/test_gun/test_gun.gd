@@ -4,7 +4,7 @@ extends Gun
 
 
 func _ready():
-	super() # runs Gun class ready function
+	super() # izsauc Gun klases ready metodi
 
 
 func _process(delta):

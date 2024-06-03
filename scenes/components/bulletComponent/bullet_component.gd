@@ -24,7 +24,6 @@ func playSound(sound: AudioStream):
 
 
 func _ready():
-	# TODO pass body to hit()
 	hitbox.hitbox_entered.connect(hit.bind())
 	parent = get_parent()
 	playSound(sound)

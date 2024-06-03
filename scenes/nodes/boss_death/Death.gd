@@ -4,11 +4,11 @@ extends Enemy
 
 
 func _ready():
-	pass
+	super()
 
 
 func _process(delta):
-	super(_process) # call process inherited from Enemy
+	super(delta) # izsauc process metodi no Enemy klases
 	
 	# get the state from actionManager and execute task depending on that state
 	if AM.currentState == AM.state.idle:
