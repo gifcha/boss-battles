@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 # movement
+@export var health: int
 @export var movementSpeed: float
 @export var rollSpeed: float
 @export var rollDistance: float
@@ -10,6 +11,9 @@ class_name Player
 
 @onready var animation = $AnimationPlayer
 
+
+func take_damage(damage):
+	health -= damage
 
 func set_global_map():
 	var map = get_world_2d().navigation_map
@@ -22,4 +26,5 @@ func _ready():
 	set_global_map()
 
 func _physics_process(delta):
-	pass
+	if health <= 0:
+		get_tree().quit()

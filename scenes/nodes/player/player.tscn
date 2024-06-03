@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=35 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Script" path="res://scenes/nodes/player/MovementController.gd" id="2_jybf5"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://slt4v02e3ca8" path="res://assets/textures/player/Character_Right.png" id="6_ana7r"]
 [ext_resource type="PackedScene" uid="uid://wihysw23ic8p" path="res://scenes/worlds/pause_menu.tscn" id="6_mntmi"]
 [ext_resource type="Texture2D" uid="uid://dqrtuhy7m2plc" path="res://assets/textures/player/Character_Up.png" id="7_0crfe"]
+[ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="13_yrh0c"]
 
 [sub_resource type="Animation" id="Animation_lcy6n"]
 resource_name = "roll"
@@ -214,10 +215,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ygvgb"]
 radius = 3.60555
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn72l"]
+size = Vector2(12, 17)
+
 [node name="player" type="CharacterBody2D"]
 motion_mode = 1
 floor_constant_speed = true
 script = ExtResource("2_lhuoy")
+health = 100
 movementSpeed = 50.0
 rollSpeed = 250.0
 rollDelay = 0.5
@@ -267,3 +272,10 @@ script = ExtResource("4_5lrgp")
 
 [node name="test_gun" parent="Hand" instance=ExtResource("5_e2rmc")]
 position = Vector2(9, 0)
+
+[node name="hitbox_module" parent="." instance=ExtResource("13_yrh0c")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox_module"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wn72l")
+debug_color = Color(0.964706, 0.219608, 0.207843, 0.215686)

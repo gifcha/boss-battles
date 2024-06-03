@@ -28,6 +28,7 @@ func _ready():
 
 
 func _process(delta):
+	global_position = $CharacterBody2D.global_position
 	if health < 1:
 		queue_free()
 	
