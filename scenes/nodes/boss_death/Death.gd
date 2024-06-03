@@ -1,10 +1,17 @@
 extends Enemy
 
 @onready var AM = $actionManager
-
+@onready var attackScene : PackedScene
 
 func _ready():
 	super()
+
+func spawnAttack(x, y):
+	var attack = Global.spawnScene(attackScene, Global.getRootNode(self))
+	attack.source = self
+	attack.speed = 0
+	attack.damage = damage
+	attack.global_position = Vector2(x, y)
 
 
 func _process(delta):

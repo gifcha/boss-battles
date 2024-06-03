@@ -3,6 +3,7 @@ class_name Enemy
 
 @export var speed : int = 100
 @export var health : int = 100
+@export var damage : int = 1
 
 @export_group("scripts")
 @export var actionManager : GDScript

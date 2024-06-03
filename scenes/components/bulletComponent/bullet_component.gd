@@ -8,13 +8,14 @@ class_name BulletComponent
 @onready var direction: Vector2
 @onready var damage: int
 
+var source: Node2D
 var parent: Node2D
 static var sound: AudioStream
 
 
 # override this function when making new bullet
 func hit(body):
-	if body.owner.has_method("take_damage"):
+	if body.owner.has_method("take_damage") and body.owner != source:
 		body.owner.take_damage(damage)
 	queue_free()
 

@@ -59,6 +59,8 @@ func getDirection():
 
 func spawnBullet(global_pos, direction):
 	var bullet = Global.spawnScene(BulletScene, Global.getRootNode(self))
+	bullet.source = player
+	bullet.speed = BulletSpeed
 	bullet.global_position = global_pos
 	bullet.direction = direction
 	bullet.sound = ShotSound
@@ -94,8 +96,6 @@ func shoot():
 	magAmmo -= 1
 	
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
-	bullet.speed = BulletSpeed
-	bullet.damage = BulletDamage
 	setScreenShake(DirectionalShakeAmount, -gunDirection)
 	timer.start(AfterShotDelay)
 
