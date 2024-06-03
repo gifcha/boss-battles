@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://i8y4uqe4eywv"]
+
+[ext_resource type="PackedScene" uid="uid://bggvj53jyje88" path="res://scenes/components/enemy/enemy.tscn" id="1_jdvsk"]
+[ext_resource type="Script" path="res://scenes/nodes/boss_death/actions.gd" id="2_5wwet"]
+[ext_resource type="Texture2D" uid="uid://645x7pt2infl" path="res://assets/textures/bosses/death/idle1.png" id="2_eggrj"]
+
+[node name="Death" instance=ExtResource("1_jdvsk")]
+actionManager = ExtResource("2_5wwet")
+
+[node name="hitbox_module" parent="CharacterBody2D" index="1"]
+position = Vector2(0, -10)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="CharacterBody2D/hitbox_module" index="0"]
+position = Vector2(0.5, -17.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+position = Vector2(3, -32)
+texture = ExtResource("2_eggrj")

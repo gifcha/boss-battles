@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://i8y4uqe4eywv"]
+
+[ext_resource type="PackedScene" uid="uid://bggvj53jyje88" path="res://scenes/components/enemy/enemy.tscn" id="1_jdvsk"]
+[ext_resource type="Script" path="res://scenes/nodes/boss_death/actions.gd" id="2_5wwet"]
+[ext_resource type="Texture2D" uid="uid://645x7pt2infl" path="res://assets/textures/bosses/death/idle1.png" id="2_eggrj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maanc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xys"]
+size = Vector2(24, 55)
+
+[node name="Death" instance=ExtResource("1_jdvsk")]
+actionManager = ExtResource("2_5wwet")
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
+shape = SubResource("CircleShape2D_maanc")
+
+[node name="hitbox_module" parent="CharacterBody2D" index="1"]
+position = Vector2(0, -10)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="CharacterBody2D/hitbox_module" index="0"]
+position = Vector2(-2, -17.5)
+shape = SubResource("RectangleShape2D_82xys")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="3"]
+position = Vector2(3, -32)
+texture = ExtResource("2_eggrj")

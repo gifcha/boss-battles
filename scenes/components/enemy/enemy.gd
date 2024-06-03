@@ -13,27 +13,28 @@ class_name Enemy
 @export var Ability3 : GDScript
 
 @onready var movement = $movement
-var ticker : int = 0
-const physicsTick = 60
+@onready var sprite = $AnimatedSprite2D
 
 
 func take_damage(damage):
 	self.health -= damage
-	print(damage)
 
 func _ready():
-	pass
-	#set_script(actionManager)
+	$actionManager.set_script(actionManager)
+	$actionManager.set_process(true)
+	$actionManager.set_physics_process(true)
 
 
 func _process(delta):
 	if health < 1:
 		queue_free()
 	
+	# flip texture depending on movement direction
+	if movement.currentMoveVector.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+	
 
 func _physics_process(delta):
-	ticker += 1
-	
-	if ticker >= physicsTick:
-		ticker = 0
-		movement.path = Navigation.request_path(self.global_position, Global.player.global_position)
+	pass

@@ -1,0 +1,131 @@
+[gd_scene load_steps=27 format=3 uid="uid://i8y4uqe4eywv"]
+
+[ext_resource type="PackedScene" uid="uid://bggvj53jyje88" path="res://scenes/components/enemy/enemy.tscn" id="1_jdvsk"]
+[ext_resource type="Script" path="res://scenes/nodes/boss_death/actions.gd" id="2_5wwet"]
+[ext_resource type="Script" path="res://scenes/nodes/boss_death/Death.gd" id="2_6q637"]
+[ext_resource type="Texture2D" uid="uid://645x7pt2infl" path="res://assets/textures/bosses/death/idle1.png" id="2_eggrj"]
+[ext_resource type="Texture2D" uid="uid://drg3wesbrghx0" path="res://assets/textures/bosses/death/attack1.png" id="4_rhgcn"]
+[ext_resource type="Texture2D" uid="uid://51sy0itac1pa" path="res://assets/textures/bosses/death/attack2.png" id="5_87p8m"]
+[ext_resource type="Texture2D" uid="uid://ctjmne8lq8bv4" path="res://assets/textures/bosses/death/idle2.png" id="5_r7uyb"]
+[ext_resource type="Texture2D" uid="uid://bwbpkfg0j6hwr" path="res://assets/textures/bosses/death/attack3.png" id="6_ibv1p"]
+[ext_resource type="Texture2D" uid="uid://bpcpf21n7eyms" path="res://assets/textures/bosses/death/idle3.png" id="6_inh3v"]
+[ext_resource type="Texture2D" uid="uid://ct41hary3wnie" path="res://assets/textures/bosses/death/attack4.png" id="7_2l5cj"]
+[ext_resource type="Texture2D" uid="uid://bpdn6ehbx2law" path="res://assets/textures/bosses/death/idle4.png" id="7_qctp1"]
+[ext_resource type="Texture2D" uid="uid://cr6fwwmlgigbq" path="res://assets/textures/bosses/death/attack5.png" id="8_n0pvf"]
+[ext_resource type="Texture2D" uid="uid://c34hu8llje51x" path="res://assets/textures/bosses/death/attack6.png" id="9_a0nxi"]
+[ext_resource type="Texture2D" uid="uid://crfr2kqvrt36n" path="res://assets/textures/bosses/death/attack7.png" id="10_irs64"]
+[ext_resource type="Texture2D" uid="uid://dadbdyspcj1tp" path="res://assets/textures/bosses/death/attack8.png" id="11_pl4e1"]
+[ext_resource type="Texture2D" uid="uid://brsf7wjwmfllc" path="res://assets/textures/bosses/death/attack9.png" id="12_qrtgi"]
+[ext_resource type="Texture2D" uid="uid://cieyw7c8s2uoj" path="res://assets/textures/bosses/death/attack10.png" id="13_g61e5"]
+[ext_resource type="Texture2D" uid="uid://la7cjmpn48vy" path="res://assets/textures/bosses/death/attack11.png" id="14_p1520"]
+[ext_resource type="Texture2D" uid="uid://bst6oaohcwqd7" path="res://assets/textures/bosses/death/attack12.png" id="15_dda10"]
+[ext_resource type="Texture2D" uid="uid://k5tawoyb3lcu" path="res://assets/textures/bosses/death/attack13.png" id="16_ifrnh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_maanc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xys"]
+size = Vector2(24, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7wqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rhgcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_87p8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ibv1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2l5cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n0pvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_a0nxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_irs64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_pl4e1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qrtgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_g61e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_p1520")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_dda10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ifrnh")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_eggrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r7uyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_inh3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qctp1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_ymtu1"]
+resource_name = "attack"
+
+[sub_resource type="Animation" id="Animation_vbqo1"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsqws"]
+_data = {
+"attack": SubResource("Animation_ymtu1"),
+"idle": SubResource("Animation_vbqo1")
+}
+
+[node name="Death" instance=ExtResource("1_jdvsk")]
+script = ExtResource("2_6q637")
+actionManager = ExtResource("2_5wwet")
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
+shape = SubResource("CircleShape2D_maanc")
+
+[node name="hitbox_module" parent="CharacterBody2D" index="1"]
+position = Vector2(0, -10)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" parent="CharacterBody2D/hitbox_module" index="0"]
+position = Vector2(-2, -17.5)
+shape = SubResource("RectangleShape2D_82xys")
+
+[node name="actionManager" parent="." index="2"]
+script = ExtResource("2_5wwet")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(3, -32)
+sprite_frames = SubResource("SpriteFrames_d7wqu")
+frame_progress = 0.0545846
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_jsqws")
+}

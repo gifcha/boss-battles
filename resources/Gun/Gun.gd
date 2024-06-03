@@ -58,12 +58,12 @@ func getDirection():
 # shooting
 
 func spawnBullet(global_pos, direction):
-	var Bullet = Global.spawnScene(BulletScene, Global.getRootNode(self))
-	Bullet.global_position = global_pos
-	Bullet.direction = direction
-	Bullet.sound = ShotSound
-	Bullet.damage = BulletDamage
-	return Bullet
+	var bullet = Global.spawnScene(BulletScene, Global.getRootNode(self))
+	bullet.global_position = global_pos
+	bullet.direction = direction
+	bullet.sound = ShotSound
+	bullet.damage = BulletDamage
+	return bullet
 
 
 func setScreenShake(shakeAmount, direction):
