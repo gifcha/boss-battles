@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://raeohy53h7cm"]
+
+[ext_resource type="Script" path="res://scenes/nodes/boss_death/SwingAttack.gd" id="1_1xtgc"]
+[ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="2_v6my0"]
+
+[node name="SwingAttack" type="Node2D" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_1xtgc")
+hitbox = NodePath("hitbox_module")
+
+[node name="hitbox_module" parent="." instance=ExtResource("2_v6my0")]
+
+[node name="CollisionShape" type="CollisionPolygon2D" parent="hitbox_module"]
+position = Vector2(-3, 5)
+polygon = PackedVector2Array(60, -39, 72, -23, 78, -3, 71, 30, 50, 51, 30, 58, -32, 58, -90, 39, -105, 13, -63, 19, -36, 16, 2, -3, 17, -15, 32, -33, 48, -49)

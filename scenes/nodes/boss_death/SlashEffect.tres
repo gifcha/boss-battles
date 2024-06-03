@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bkqptn1dmonrb"]
+
+[ext_resource type="Texture2D" uid="uid://bchgadfuyed4w" path="res://assets/textures/bosses/death/attack_effect1.png" id="1_3cpt2"]
+[ext_resource type="Texture2D" uid="uid://dky2qqyyvng0u" path="res://assets/textures/bosses/death/attack_effect2.png" id="2_uysnk"]
+[ext_resource type="Texture2D" uid="uid://dspdxjg8gd4fr" path="res://assets/textures/bosses/death/attack_effect3.png" id="3_ebqwr"]
+[ext_resource type="Texture2D" uid="uid://d37avcesnyro7" path="res://assets/textures/bosses/death/attack_effect4.png" id="4_4t471"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3cpt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uysnk")
+}],
+"loop": false,
+"name": &"slash1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ebqwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4t471")
+}],
+"loop": false,
+"name": &"slash2",
+"speed": 5.0
+}]

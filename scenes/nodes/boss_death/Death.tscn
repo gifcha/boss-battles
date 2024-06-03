@@ -1,16 +1,70 @@
-[gd_scene load_steps=13 format=3 uid="uid://i8y4uqe4eywv"]
+[gd_scene load_steps=16 format=3 uid="uid://i8y4uqe4eywv"]
 
 [ext_resource type="PackedScene" uid="uid://bggvj53jyje88" path="res://scenes/components/enemy/enemy.tscn" id="1_jdvsk"]
 [ext_resource type="Script" path="res://scenes/nodes/boss_death/actions.gd" id="2_5wwet"]
 [ext_resource type="Script" path="res://scenes/nodes/boss_death/Death.gd" id="2_6q637"]
 [ext_resource type="SpriteFrames" uid="uid://bxexne3wwu1uj" path="res://scenes/nodes/boss_death/animations.tres" id="4_x6xfk"]
+[ext_resource type="SpriteFrames" uid="uid://bkqptn1dmonrb" path="res://scenes/nodes/boss_death/SlashEffect.tres" id="5_2fmk5"]
 [ext_resource type="Script" path="res://scenes/nodes/boss_death/Attack.gd" id="5_457qu"]
-[ext_resource type="PackedScene" uid="uid://b6vdot8h7ml2q" path="res://scenes/nodes/boss_death/SwingAttack.tscn" id="6_cwab2"]
+[ext_resource type="Script" path="res://scenes/nodes/boss_death/SlashEffect.gd" id="6_uhx42"]
+[ext_resource type="PackedScene" uid="uid://b6vdot8h7ml2q" path="res://scenes/nodes/boss_death/SwingAttack1.tscn" id="8_uxn73"]
+[ext_resource type="PackedScene" uid="uid://raeohy53h7cm" path="res://scenes/nodes/boss_death/SwingAttack2.tscn" id="9_gnxeu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_maanc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_82xys"]
 size = Vector2(24, 55)
+
+[sub_resource type="Animation" id="Animation_5gcyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/SlashEffect:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/SlashEffect:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_ymtu1"]
 resource_name = "attack"
@@ -23,17 +77,17 @@ tracks/0/path = NodePath("Attack")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.7, 1.35, 1.8),
+"times": PackedFloat32Array(0.3, 0.6, 1.35, 1.71),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
-"method": &"spawnAttack"
+"method": &"spawnAttack1"
 }, {
 "args": [],
 "method": &"deleteAttack"
 }, {
 "args": [],
-"method": &"spawnAttack"
+"method": &"spawnAttack2"
 }, {
 "args": [],
 "method": &"deleteAttack"
@@ -63,36 +117,33 @@ tracks/2/keys = {
 "update": 0,
 "values": [0, 13]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimatedSprite2D/SlashEffect:animation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1.35, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"default", &"slash1", &"default", &"slash2", &"default"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D/SlashEffect:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.45, 1.35, 1.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 0, 1]
+}
 
 [sub_resource type="Animation" id="Animation_vbqo1"]
 resource_name = "idle"
-
-[sub_resource type="Animation" id="Animation_5gcyy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"attack"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jsqws"]
 _data = {
@@ -131,9 +182,15 @@ libraries = {
 "": SubResource("AnimationLibrary_jsqws")
 }
 
+[node name="SlashEffect" type="AnimatedSprite2D" parent="AnimatedSprite2D" index="1"]
+position = Vector2(0, 21)
+sprite_frames = ExtResource("5_2fmk5")
+script = ExtResource("6_uhx42")
+
 [node name="Attack" type="Node2D" parent="." index="4"]
 script = ExtResource("5_457qu")
-attackScene = ExtResource("6_cwab2")
+attackScene1 = ExtResource("8_uxn73")
+attackScene2 = ExtResource("9_gnxeu")
 
 [node name="AttackMarker" type="Marker2D" parent="Attack" index="0"]
-position = Vector2(29, -26)
+position = Vector2(16, -33)

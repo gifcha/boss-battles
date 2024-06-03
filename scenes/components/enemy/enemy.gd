@@ -35,11 +35,11 @@ func _process(delta):
 	# apgriezt sprite un hitbox atkarībā no kustības
 	if movement.currentMoveVector.x < 0:
 		sprite.flip_h = true
-		$CharacterBody2D/hitbox_module.flip_h = true
+		$CharacterBody2D/hitbox_module.scale.x = -1
 		sprite.position.x = -unflippedSpritePos.x
 	else:
 		sprite.flip_h = false
-		$CharacterBody2D/hitbox_module.flip_h = false
+		$CharacterBody2D/hitbox_module.scale.x = 1
 		sprite.position.x = unflippedSpritePos.x
 	
 
