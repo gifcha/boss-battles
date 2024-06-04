@@ -14,6 +14,7 @@ class_name Player
 
 func take_damage(damage):
 	health -= damage
+	animation.play("hurt")
 
 func set_global_map():
 	var map = get_world_2d().navigation_map
@@ -28,3 +29,5 @@ func _ready():
 func _physics_process(delta):
 	if health <= 0:
 		get_tree().quit()
+	
+	$Camera2D/CanvasLayer/Health.text = str(health)

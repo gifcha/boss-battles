@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=38 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Script" path="res://scenes/nodes/player/MovementController.gd" id="2_jybf5"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
@@ -71,11 +71,51 @@ tracks/3/keys = {
 "method": &"startRollTimer"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_num5p"]
+resource_name = "hurt"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.898039, 0.0117647, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mcx2b"]
+resource_name = "idle"
+loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ltd2s"]
 _data = {
+"hurt": SubResource("Animation_num5p"),
+"idle": SubResource("Animation_mcx2b"),
 "roll": SubResource("Animation_lcy6n")
 }
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dc4r"]
+font_size = 28
+font_color = Color(0, 0.937255, 0.301961, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tl06q"]
 atlas = ExtResource("4_lod7w")
@@ -235,6 +275,7 @@ process_callback = 0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_ltd2s")
 }
@@ -250,6 +291,13 @@ script = ExtResource("4_vo3mc")
 [node name="PauseMenu" parent="Camera2D/CanvasLayer" instance=ExtResource("6_mntmi")]
 z_index = 0
 z_as_relative = false
+
+[node name="Health" type="Label" parent="Camera2D/CanvasLayer"]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 72.0
+offset_bottom = 47.0
+label_settings = SubResource("LabelSettings_4dc4r")
 
 [node name="ScreenShakeController" parent="Camera2D" instance=ExtResource("3_il28j")]
 

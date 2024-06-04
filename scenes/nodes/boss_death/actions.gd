@@ -9,7 +9,7 @@ enum state {idle, move, attack, ability1, ability2, ability3}
 var decisionTick = decisionTickMin
 
 
-var currentState = state.move
+@export var currentState = state.move
 
 
 func _ready():
@@ -24,7 +24,10 @@ func _physics_process(delta):
 	
 	if ticker >= decisionTick:
 		if distToPlayer > 100:
-			currentState = state.move
+			if randi_range(0, 2) == 1:
+				currentState = state.ability1
+			else:
+				currentState = state.move
 		else:
 			currentState = state.attack
 		

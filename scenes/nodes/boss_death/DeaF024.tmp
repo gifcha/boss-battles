@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"default"]
+"values": [&"attack"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,20 +66,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Attack")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"deleteAttack"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_ymtu1"]
@@ -157,47 +143,9 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 0, 1, 0, 1]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("actionManager:currentState")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_vbqo1"]
 resource_name = "idle"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 3]
-}
 
 [sub_resource type="Animation" id="Animation_aaai2"]
 resource_name = "teleport"
@@ -240,18 +188,6 @@ tracks/2/keys = {
 "method": &"teleport"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("actionManager:currentState")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jsqws"]
 _data = {
@@ -264,7 +200,6 @@ _data = {
 [node name="Death" instance=ExtResource("1_jdvsk")]
 script = ExtResource("2_6q637")
 speed = 25
-damage = 10
 actionManager = ExtResource("2_5wwet")
 
 [node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
@@ -284,6 +219,7 @@ script = ExtResource("2_5wwet")
 [node name="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(5, -23)
 sprite_frames = ExtResource("4_x6xfk")
+animation = &"attack"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" index="0"]
 root_node = NodePath("../..")
@@ -310,23 +246,3 @@ script = ExtResource("10_h5vuf")
 
 [node name="Teleport" type="Node2D" parent="." index="6"]
 script = ExtResource("11_wmrkr")
-
-[node name="HealthBar" type="ProgressBar" parent="." index="7"]
-self_modulate = Color(1, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = 12.0
-offset_right = 47.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-step = 1.0
-value = 100.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
