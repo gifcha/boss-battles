@@ -2,7 +2,6 @@ extends Node2D
 class_name BulletComponent
 
 @export var hitbox: Hitbox
-@export var AudioPlayer: AudioStreamPlayer2D
 
 @onready var speed: int
 @onready var direction: Vector2
@@ -19,15 +18,10 @@ func hit(body):
 		body.owner.take_damage(damage)
 		queue_free()
 
-func playSound(sound: AudioStream):
-	AudioPlayer.stream = sound
-	AudioPlayer.play(0)
-
 
 func _ready():
 	hitbox.hitbox_entered.connect(hit.bind())
 	parent = get_parent()
-	playSound(sound)
 
 func _physics_process(delta):
 	var velocity = direction * speed * Global.UNIT_SIZE * delta

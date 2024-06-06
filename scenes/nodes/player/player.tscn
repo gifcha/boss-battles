@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cdw1wl2xiokmu"]
+[gd_scene load_steps=43 format=3 uid="uid://cdw1wl2xiokmu"]
 
 [ext_resource type="Script" path="res://scenes/nodes/player/MovementController.gd" id="2_jybf5"]
 [ext_resource type="Script" path="res://scenes/nodes/player/CharacterBody2D.gd" id="2_lhuoy"]
@@ -7,11 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://d2s3u5ctueter" path="res://assets/textures/player/Character_Down.png" id="4_lod7w"]
 [ext_resource type="Script" path="res://scenes/nodes/player/Camera2D.gd" id="4_vo3mc"]
 [ext_resource type="PackedScene" uid="uid://c33agwj7ecx2b" path="res://scenes/nodes/player/AimOffsetController/AimOffsetController.tscn" id="4_wpkin"]
+[ext_resource type="Script" path="res://scenes/nodes/player/ReloadTimer.gd" id="5_6ehw8"]
 [ext_resource type="PackedScene" uid="uid://cvg6jsllvpcmt" path="res://scenes/nodes/test_gun/test_gun.tscn" id="5_e2rmc"]
 [ext_resource type="Texture2D" uid="uid://blea14khpxe2i" path="res://assets/textures/player/Character_Left.png" id="5_nspy2"]
 [ext_resource type="Texture2D" uid="uid://slt4v02e3ca8" path="res://assets/textures/player/Character_Right.png" id="6_ana7r"]
 [ext_resource type="PackedScene" uid="uid://wihysw23ic8p" path="res://scenes/worlds/pause_menu.tscn" id="6_mntmi"]
 [ext_resource type="Texture2D" uid="uid://dqrtuhy7m2plc" path="res://assets/textures/player/Character_Up.png" id="7_0crfe"]
+[ext_resource type="Script" path="res://scenes/nodes/player/MouseAnchor.gd" id="7_awfku"]
+[ext_resource type="Texture2D" uid="uid://oywmoxjlksni" path="res://assets/textures/gui/reload_bg.png" id="7_y33je"]
+[ext_resource type="Texture2D" uid="uid://vvnn72m6u4gp" path="res://assets/textures/gui/reload_outline.png" id="8_1fqkh"]
+[ext_resource type="Texture2D" uid="uid://c5ym8lwpuue1" path="res://assets/textures/gui/reload_chamber.png" id="9_nrh6w"]
 [ext_resource type="PackedScene" uid="uid://bo7vdegkrlx7f" path="res://scenes/modules/hitboxModule/hitbox_module.tscn" id="13_yrh0c"]
 
 [sub_resource type="Animation" id="Animation_num5p"]
@@ -303,6 +308,31 @@ label_settings = SubResource("LabelSettings_4dc4r")
 
 [node name="AimOffsetController" parent="Camera2D" instance=ExtResource("4_wpkin")]
 process_mode = 1
+
+[node name="MouseAnchor" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 29.0
+offset_top = -35.0
+offset_right = 69.0
+offset_bottom = 5.0
+script = ExtResource("7_awfku")
+metadata/_edit_use_anchors_ = true
+
+[node name="ReloadBar" type="TextureProgressBar" parent="Camera2D/MouseAnchor"]
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+value = 33.0
+fill_mode = 4
+nine_patch_stretch = true
+texture_under = ExtResource("7_y33je")
+texture_over = ExtResource("8_1fqkh")
+texture_progress = ExtResource("9_nrh6w")
+script = ExtResource("5_6ehw8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)

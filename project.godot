@@ -21,12 +21,12 @@ GlobalVariables="*res://global_variables.gd"
 SignalController="*res://signal_controller.gd"
 Navigation="*res://navigation.gd"
 Debug="*res://Debugger.gd"
+Audio="*res://Audio.gd"
 
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
-window/size/mode=4
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 

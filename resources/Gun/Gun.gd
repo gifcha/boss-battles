@@ -63,13 +63,15 @@ func spawnBullet(global_pos, direction):
 	bullet.speed = BulletSpeed
 	bullet.global_position = global_pos
 	bullet.direction = direction
-	bullet.sound = ShotSound
 	bullet.damage = BulletDamage
 	return bullet
 
 
 func setScreenShake(shakeAmount, direction):
 	SignalController.emit_signal("directionalScreenShake", shakeAmount, direction)
+
+func playReloadAnimation():
+	SignalController.emit_signal("reloading", ReloadTime)
 
 
 func canShoot():
@@ -83,11 +85,17 @@ func canShoot():
 
 func reload():
 	var spent = MagSize - magAmmo
+	timer.start(ReloadTime)
+	
+	Audio.playSound(ReloadSound)
+	playReloadAnimation()
+	
+	await timer.timeout
 	if spent > 0 and ammo > 0:
-		print("reloading")
 		var r = min(ammo, spent) # if theres less ammo than spent amount then this uses the avaliable ammo
 		ammo -= r
 		magAmmo += r
+	
 
 func shoot():
 	if canShoot() == false:
@@ -98,18 +106,18 @@ func shoot():
 	var bullet = spawnBullet(BarrelMarker.global_position, gunDirection)
 	setScreenShake(DirectionalShakeAmount, -gunDirection)
 	timer.start(AfterShotDelay)
+	
+	Audio.playSound(ShotSound)
 
 
 
 # timer
-
 func initTimer():
 	add_child(timer)
 	timer.autostart = true
 	timer.one_shot = true
 	timer.wait_time = AfterShotDelay
 	timer.stop
-
 
 
 

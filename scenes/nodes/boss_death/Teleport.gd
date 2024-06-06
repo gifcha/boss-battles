@@ -24,4 +24,5 @@ func getPosAroundPlayer():
 	
 
 func teleport():
-	boss.global_position = getPosAroundPlayer()
+	if boss != null:
+		boss.global_position = getPosAroundPlayer()

@@ -2,6 +2,9 @@ extends Node2D
 
 @export var attackScene1 : PackedScene
 @export var attackScene2 : PackedScene
+@export var AttackSound : AudioStream
+@export var AttackVolume = 0.0
+
 @onready var boss = get_parent()
 @onready var attackMarker = $AttackMarker
 @onready var unflippedMarkerPos = attackMarker.position
@@ -27,6 +30,10 @@ func deleteAttack():
 	# ja attack elements vel pastav, izdzest
 	if is_instance_valid(attack):
 		attack.queue_free()
+
+func playSound():
+	Audio.playSound(AttackSound)
+
 
 
 func _process(delta):

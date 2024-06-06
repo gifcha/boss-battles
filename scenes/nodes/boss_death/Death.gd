@@ -10,10 +10,13 @@ func _ready():
 
 
 func tryToPlayAnim(name : String):
-	if animation.current_animation == "idle":
-		animation.play(name)
-	else:
-		animation.queue(name)
+	# uzsak animaciju ja neviena netiek speleta, ja tiek tad pievieno to rindai
+	if animation.current_animation != name and !(name in animation.get_queue()):
+		if animation.is_playing():
+			animation.queue(name)
+		else:
+			animation.play(name)
+
 
 func _process(delta):
 	super(delta) # izsauc process metodi no Enemy klases
