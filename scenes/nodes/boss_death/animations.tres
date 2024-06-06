@@ -129,7 +129,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_kwc70")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 2.0
 }, {
@@ -170,7 +170,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vux2b")
 }],
-"loop": true,
+"loop": false,
 "name": &"teleport",
 "speed": 5.0
 }]
