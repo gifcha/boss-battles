@@ -53,10 +53,6 @@ size_flags_vertical = 8
 focus_neighbor_top = NodePath("../QuitButton")
 text = "Start"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -83,5 +79,4 @@ volume_db = -14.0833
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
